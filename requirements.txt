@@ -1,0 +1,61 @@
+Retail Store
+•	Design and implement a retail store system. The store should have the features listed below.
+
+Terminology
+•	Store: A physical location where products are stored and sold.
+•	Merchandise: A raw commodity as produced by the manufacturer.  Merchandise products are usually shipped to the retail stores to be sold.
+•	Product:  A single “sellable” merchandise. A merchandise is considered sellable when it has a price and/or offer attached to it.
+•	Price: A  currency amount attached to a merchandise to determine its value. Prices can be classified as retail price/ list price and sale price.
+o	Retail / List Price: Also known as “manufacturer’s price” or “sticker” price, “base price” or more commonly known as the “suggested price”. This is the base price set by the manufacturer of the merchandise. Sale prices at the store cannot exceed the list price. 
+o	Sale Price: The current price at which the product is being sold. Sale prices are usually associated with a discount, and have a start date and end date.
+•	Discount: A concession offered on top of the retail or sale price. Discounts usually are time sensitive, and apply to a narrow section of the store merchandise.  E.x,  “10% off”, “%$5 Off”, etc.
+	
+Requirements
+The retail store application should have the following requirements.
+•	Req_1001: A REST API to create a store.
+•	Req_1002: A REST API to create products and define a retail price on the products.
+…
+more
+…
+
+Stories
+Story 5001: (Captures Requirements: Req_1001)
+•	As a chain store owner, I need the ability to create a store in a specified location using REST API.
+•	
+o	 Notes:
+•	Should take the following parameters:
+	Chain Store Name (“Walmart” )
+	Chain Store ID ( “9000134005672”) – Unique ID per chain store
+	Store Type: E.x, “SuperCenter”, “Neighborhood” etc..
+	Local Store Name (“Walmart Super Center”)
+	Local Store Full Name(“Walmart Super Center at Plaza”)
+	Store Address
+	Store ZipCode
+	Store Area
+	Store Length
+	Store Width
+
+o	 Acceptance Criteria:
+•	Create a store calling the API with all the defined parameters. Store should be created. Will be verified by seeing in the database.
+
+Story 5002: (Captures Requirements: Req_1001)
+
+•	As a chain store owner, I need the ability to view all the local stores that are under the main store, using a REST API.
+
+•	Notes
+o	Should take the following parameters:
+•	Chain store ID.
+o	
+o	Should return all the fields of the store.
+o	
+•	Acceptance Criteria
+o	Call REST API and make sure appropriate data is returned.
+
+Story 5003:
+As a chain store owner, I need a simple  web-based user interface to create a store and list all the stores under the chain store.
+
+
+
+
+
+
