@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-    	mavenCentral()
         jcenter()
         maven { url "http://repo.spring.io/snapshot" }
         maven { url "http://repo.spring.io/milestone" }
@@ -12,10 +11,6 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
-
-springBoot {
-  mainClass = "com.akijay.retailstore.RetailStore"
-}
 
 jar {
     baseName = 'retailstore'
@@ -29,8 +24,13 @@ repositories {
 }
 
 dependencies {
-    compile  "org.springframework.boot:spring-boot-starter-web", 
-    		 "org.neo4j:neo4j:3.0.1"
-    		
+    compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+
+//tasks
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
 }
