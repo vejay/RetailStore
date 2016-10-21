@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="retailStoreApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Retail Store</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/retailstore.css">
+</head>
+<body>
+    <h1 class="heading">Retail Store Administration</h1>
+    <br>
+    <div ng-controller="retailStoreCtrl">
+        <h2 class="operation">Create a Store</h2>
+            <div class="createFields">
+                <ng-form name="createFieldForm">
+                    <div class="">
+                        <label class="labelLarge">Store Name:</label>
+                        <input class="searchText" type="text" value="" ng-model="newStore.name" required/>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label class="labelLarge">Store Address1:</label>
+                        <input class="textLarge" type="text" value="" ng-model="newStore.address1" required/>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label class="labelLarge">Store Address2:</label>
+                        <input class="searchText" type="text" value="" ng-model="newStore.address2" required/>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label class="labelLarge">Store ZipCode:</label>
+                        <input class="textSmall" type="text" value="" ng-model="newStore.zipCode" required/>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label class="labelLarge">Parent Store:</label>
+                        <select ng-model="newStore.parent" ng-options="store as store for store in parentStores"></select>
+                    </div>
+                    <br>
+                    <button class="buttonLarge" ng-click="createStore()">Create</button>
+                </ng-form>
+            </div>
+        <br>
+
+        <h2 class="operation details">Get Store Details</h2>
+            <div class="queryField">
+                <label class="searchLabel">Store Name:</label>
+                <input class="searchText" type="text" value="" ng-model="searchStoreName"/>
+            </div>
+            <br>
+            <div class="queryField">
+                <label class="searchLabel">Store ID:</label>
+                <input type="text" value="" ng-model="searchStoreID"/>
+            </div>
+            <br>
+            <div class="searchResults" ng-show="storeDetails">
+            </div>
+        <br>
+
+        <h2 class="operation">Delete a Store</h2>
+            <div class="deleteFields">
+                <select ng-model="selectedDelete" ng-options="value as value for value in values"></select>
+                <button class="button">Delete</button>
+            </div>
+        <br>
+
+        <br>
+
+        <h2 class="operation">List all stores</h2>
+        <div class="listFields">
+             <button class="buttonLarge" ng-click="listAll()">List All</button>
+             <a class="clearLink" href="javascript:void(0);" ng-show="allStores" ng-click="clearAllStoresView()">Reset</a>
+             <br>
+             <div class="searchResults" ng-show="allStores">{{allStores}}</div>
+
+        </div>
+        </div>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+.heading{
+    color: blue;
+}
+.operation {
+    color: red;
+}
+
+.createFields {
+    padding-left: 10px;
+}
+
+.deleteFields {
+    padding-left: 10px;
+}
+.listFields {
+    padding-left: 10px;
+}
+
+.queryField{
+    margin-left: 10px;
+}
+
+.searchLabel {
+    width: 100px;
+    float: left;
+}
+
+.labelLarge {
+    width: 150px;
+    float: left;
+}
+.searchText {
+    width: 200px;
+}
+
+.textLarge {
+    width: 250px;
+}
+
+.textSmall {
+    width: 60px;
+}
+
+.searchResults {
+    height: 300px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.button {
+    margin-left: 10px;
+}
+
+.buttonMedium {
+    width:60px;
+    height: 25px;
+}
+.buttonLarge {
+    width: 70px;
+    height: 30px;
+}
+
+.clearLink {
+    margin-left: 15px;
+    font-size: 20px;
+
+}

@@ -19,7 +19,7 @@ public class RetailStore
     @Autowired
     private StoreService storeService;
 
-    @RequestMapping("/")
+    //@RequestMapping("/")
     String home()
     {
         return "Hello World From RetailStore1";
@@ -29,8 +29,9 @@ public class RetailStore
             value = "/chainStore",
             method = RequestMethod.POST
         )
-    public Store createChainStore(
-            @RequestParam Long  storeId,
+
+    /*public Store createChainStore(
+            @RequestParam BigInteger  storeId,
             @RequestParam String name,
             @RequestParam String address1,
             @RequestParam String address2,
@@ -40,6 +41,12 @@ public class RetailStore
     ){
         System.out.println("Create chain store called with params = " + storeId  + " " + name + " "  + address1 + " " + address2 + " " + zipCode + " " + parentStoreId);
         return storeService.createStore(storeId, name, address1, address2, zipCode, parentStoreId);
+    }*/
+
+
+    public Store createChainStore(@RequestBody Store store){
+        System.out.println("Create chain store called with store = " + store);
+        return storeService.createStore(store);
     }
 
     @RequestMapping(value="/chainStore", method=RequestMethod.GET)
