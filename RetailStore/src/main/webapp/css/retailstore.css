@@ -1,8 +1,13 @@
+.background {
+
+}
 .heading{
-    color: blue;
+    color: #77022d;
+    //background-color: #009B9C;
+    height: 20px;
 }
 .operation {
-    color: red;
+    color: #4804f2;
 }
 
 .createFields {
@@ -60,8 +65,72 @@
     height: 30px;
 }
 
+.createButton {
+    float: left;
+}
+
 .clearLink {
     margin-left: 15px;
     font-size: 20px;
 
+}
+
+.statusMsg {
+    margin-top:10px;
+    font-weight: bold;
+}
+.statusImg {
+    margin-top:5px;
+    margin-right: 5px;
+    float: left;
+}
+.statusText {
+    padding-top: 5px;
+    margin-left: 5px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+
+th{
+    border-top: 1px solid #009B9C;
+    border-bottom: 1px solid  #009B9C;
+    border-left: 1px solid  #009B9C;
+}
+
+tr {
+  border: 1px solid  #009B9C;
+}
+
+td {
+  border-bottom: 1px solid  #009B9C;
+  border-left: 1px solid  #009B9C;
+}
+
+.last {
+    border-right: 1px solid  #009B9C;
+}
+
+.floatRight {
+    float: right;
+}
+
+
+.floatLeft {
+    float: left;
+}
+
+.left10px {
+    margin-left: 10px;
+}
+
+.error {
+    font-color: #red;
+    margin-left: 5px;
 }

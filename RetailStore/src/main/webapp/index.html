@@ -3,49 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>Retail Store</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/retailstore.css">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
 </head>
-<body>
-    <h1 class="heading">Retail Store Administration</h1>
+<body style="background-color: e8e1e1; margin-left: 10px;">
+    <h1 class="md-display-2 heading background">Retail Store Administration</h1>
     <br>
-    <div ng-controller="retailStoreCtrl">
-        <h2 class="operation">Create a Store</h2>
+    <div ng-controller="retailStoreCtrl as ctrl">
+        <h2 class="md-headline operation">Create a Store</h2>
+            <br>
             <div class="createFields">
-                <ng-form name="createFieldForm">
+                <ng-form name="ctrl.createFieldForm">
                     <div class="">
-                        <label class="labelLarge">Store Name:</label>
-                        <input class="searchText" type="text" value="" ng-model="newStore.name" required/>
+                        <label class="labelLarge">Store Type:</label>
+                        <select ng-model="newStore.storeType" ng-options="type as type for type in storeTypes" required ng-change="storeTypeUpdated()"></select>
                     </div>
                     <br>
                     <div class="">
+                        <label class="floatLeft labelLarge">Store ID:</label>
+                        <input class="floatLeft searchText" type="text" name="id" value="" ng-readonly="true" ng-model="newStore.id" required/>
+                        <a class="left10px" href="javascript:void(0);" ng-click="generateId()">Generate</a>
+                    </div>
+                    <br>
+                    <div class="">
+                        <label class="labelLarge">Store Name:</label>
+                        <input class="searchText" type="text" name="name" value="" ng-model="newStore.name" required/>
+                        <span class="error" ng-show="ctrl.createFieldForm.name.$dirty && createFieldForm.name.$error.required">*Required</span>
+                    </div>
+                    <br>
+                    <div class="" ng-show="newStore.storeType=='FRANCHISE'">
+                        <label class="labelLarge">Local Store Name:</label>
+                        <input class="searchText" type="text" name="localName" value="" ng-model="newStore.localName" required/>
+                        <span class="error" ng-show="ctrl.createFieldForm.localName.$dirty && createFieldForm.localName.$error.required">*Required</span>
+                    </div>
+                    <br>
+
+                    <div class="">
                         <label class="labelLarge">Store Address1:</label>
-                        <input class="textLarge" type="text" value="" ng-model="newStore.address1" required/>
+                        <input class="textLarge" type="text" name="address1" value="" ng-model="newStore.address1" required/>
+                        <span class="error" ng-show="ctrl.createFieldForm.address1.$dirty && createFieldForm.address1.$error.required">*Required</span>
                     </div>
                     <br>
                     <div class="">
                         <label class="labelLarge">Store Address2:</label>
-                        <input class="searchText" type="text" value="" ng-model="newStore.address2" required/>
+                        <input class="searchText" type="text" name="address2" value="" ng-model="newStore.address2" required/>
+                        <span class="error" ng-show="ctrl.createFieldForm.address2.$dirty && createFieldForm.address2.$error.required">*Required</span>
                     </div>
                     <br>
                     <div class="">
                         <label class="labelLarge">Store ZipCode:</label>
-                        <input class="textSmall" type="text" value="" ng-model="newStore.zipCode" required/>
+                        <input class="textSmall" type="text" name="zipcode" value="" ng-model="newStore.zipCode" required/>
+                        <span class="error" ng-show="ctrl.createFieldForm.zipcode.$dirty && createFieldForm.zipcode. $error.required">*Required</span>
                     </div>
                     <br>
-                    <div class="">
-                        <label class="labelLarge">Parent Store:</label>
-                        <select ng-model="newStore.parent" ng-options="store as store for store in parentStores"></select>
+                    <div ng-show="newStore.storeType=='FRANCHISE'">
+                         <div class="" ng-show="newStore.storeType=='FRANCHISE'">
+                            <label class="labelLarge">Parent Store:</label>
+                            <select ng-options="chain.name for chain in chainStores"
+                                    ng-model="newStore.parentStore">
+                            </select>
+                        </div>
+                        <br>
+                        <div class="">
+                            <label class="labelLarge">Store Length:</label>
+                            <input class="textSmall" type="text" name="length" value="" ng-model="newStore.length" required/>
+                        </div>
+                        <br>
+                        <div class="">
+                            <label class="labelLarge">Store Width:</label>
+                            <input class="textSmall" type="text" name="length" value="" ng-model="newStore.width" required/>
+                        </div>
+                        <br>
+                        <div class="">
+                            <label class="labelLarge">Store Height:</label>
+                            <input class="textSmall" type="text" name="length" value="" ng-model="newStore.height" required/>
+                        </div>
                     </div>
                     <br>
-                    <button class="buttonLarge" ng-click="createStore()">Create</button>
+                    <div>
+                        <md-button class="md-raised md-cornered buttonLarge" ng-click="createStore()">Create</md-button>
+
+                        <div ng-show="status" class="statusMsg">
+                            <div ng-show="status.success" class="success">
+                                <img class="statusImg" src="images/green-checkmark.png" width="20px" height="20px"/>
+                                <div class="statusText">Store {{newStoreName}} Successfully Created!</div>
+                            </div>
+                            <div ng-show="status.error" class="error">
+                                <img class="statusImg" src="images/red-x-mark.png" width="20px" height="20px"/>
+                                <div class="statusText">Failed to create the Store</div>
+                            </div>
+                        </div>
+                    </div>
                 </ng-form>
             </div>
         <br>
 
-        <h2 class="operation details">Get Store Details</h2>
+        <h2 class="md-headline operation details">Get Store Details</h2>
             <div class="queryField">
                 <label class="searchLabel">Store Name:</label>
                 <input class="searchText" type="text" value="" ng-model="searchStoreName"/>
@@ -60,22 +124,39 @@
             </div>
         <br>
 
-        <h2 class="operation">Delete a Store</h2>
+        <h2 class="md-headline operation">Delete a Store</h2>
             <div class="deleteFields">
                 <select ng-model="selectedDelete" ng-options="value as value for value in values"></select>
-                <button class="button">Delete</button>
+                <md-button class="md-raised md-cornered button">Delete</md-button>
             </div>
         <br>
-
         <br>
 
-        <h2 class="operation">List all stores</h2>
+        <h2 class="md-headline operation">List all stores</h2>
         <div class="listFields">
-             <button class="buttonLarge" ng-click="listAll()">List All</button>
-             <a class="clearLink" href="javascript:void(0);" ng-show="allStores" ng-click="clearAllStoresView()">Reset</a>
+             <md-button class="md-raised md-cornered buttonLarge" ng-click="listAll()">List All</md-button>
+                 <a class="clearLink" href="javascript:void(0);" ng-show="allStores" ng-click="clearAllStoresView()">Clear</a>
              <br>
-             <div class="searchResults" ng-show="allStores">{{allStores}}</div>
+             <div class="searchResults" ng-show="allStores.length > 0">
+               <table>
+                   <th>Type</th>
+                   <th>Store Name</th>
+                   <th>Address1</th>
+                   <th>Address2</th>
+                   <th>ZipCode</th>
+                   <th class="last">Parent Store</th>
 
+                   <tr ng-repeat="store in allStores">
+                       <td height="20px;">{{store.type}}</td>
+                       <td height="20px;">{{store.name}}</td>
+                       <td height="20px;">{{store.address.address1}}</td>
+                       <td height="20px;">{{store.address.address2}}</td>
+                       <td height="20px;">{{store.address.zipCode}}</td>
+                       <td class="last" height="20px;">{{store.parentStore}}</td>
+                   </tr>
+
+               </table>
+            </div>
         </div>
         </div>
 
