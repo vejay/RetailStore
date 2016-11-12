@@ -2,9 +2,11 @@
 
 }
 .heading{
-    color: #77022d;
-    //background-color: #009B9C;
-    height: 20px;
+    text-align:center;
+    font-family: arvo;
+    color: #FFFFFF;
+    background-color: #8ABD25;
+    height: 60px;
 }
 .operation {
     color: #4804f2;

@@ -28,6 +28,7 @@ repositories {
     maven { url "https://repo.spring.io/libs-snapshot" }
     maven { url "http://repo.spring.io/snapshot" }
     maven { url "http://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/libs-release"} //for springfox-swagger
     jcenter()
 }
 
@@ -37,7 +38,9 @@ dependencies {
              "com.fasterxml.jackson.datatype:jackson-datatype-jdk8",
              "org.neo4j:neo4j:3.0.1",
              "org.mongodb:mongo-java-driver:3.3.0",
-             "org.springframework.boot:spring-boot-starter-data-mongodb"
+             "org.springframework.boot:spring-boot-starter-data-mongodb",
+             "io.springfox:springfox-swagger-ui:2.6.0",
+             "io.springfox:springfox-swagger2:2.6.0"
     		
     testCompile("org.springframework.boot:spring-boot-starter-test:2.0.0.BUILD-SNAPSHOT")
 }

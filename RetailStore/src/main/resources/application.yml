@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: retailstore
+
+  data:
+    mongodb:
+      repositories.enabled: true
+      uri:  mongodb://localhost:27017/retailstore
+
+  autoconfigure:
+    exclue: HibernateJpaAutoConfigurati.class
+
+
+server:
+  port: 9001
+  contextPath: /
+---
+spring:
+    profiles: development
+server:
+    port: 9000
+
+---
+spring:
+  profiles: production
+
+server:
+  port: 0
