@@ -33,6 +33,7 @@ public class RetailStoreApplication {
         return new Docket(DocumentationType.SWAGGER_2)
             .select()
             .apis(RequestHandlerSelectors.basePackage("com.akijay.retailstore.controllers"))
+            //.apis(RequestHandlerSelectors.basePackage("com.akijay.retailstore.store"))
             .paths(PathSelectors.any())
             .build()
             .apiInfo(apiInfo());
@@ -46,7 +47,7 @@ public class RetailStoreApplication {
                 "Retail Store REST API",
                 "REST API for managing a chain of retail stores",
                 "1.0",
-                "about.html",
+                "about.html ",
                 new Contact("Vijay and Akila", "about.html", "vijaykumar.v@gmail.com"),
                 "AKIJAY LICENSE",
                 "about.html"

@@ -34,7 +34,7 @@ public class StoreService {
         }
     }
 
-    public Store createStore(StoreModel newStore){
+    public Store createStore(StoreModel newStore) {
 
         StoreModel.Address address = newStore.address;
         AddressEntity addressEntity = new AddressEntity(address.address1, address.address2, address.zipCode);
