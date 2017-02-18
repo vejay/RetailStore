@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").failureUrl("/login-error"); */
 
-        //TODO: Temporariliy disabliing until we write our own custom JSP page
+        //TODO: Temporariliy disabling until we write our own custom JSP page
         http.csrf().disable();
     }
 

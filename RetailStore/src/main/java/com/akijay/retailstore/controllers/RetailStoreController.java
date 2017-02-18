@@ -41,16 +41,16 @@ public class RetailStoreController {
         return storeService.getStore(id);
     }
 
-    @RequestMapping(value = "/store", method = RequestMethod.DELETE)
-    public void removeStore(@RequestParam Long storeId) {
-        System.out.println("Delete chain store called for storeId=" + storeId);
-        storeService.deleteStore(storeId);
-    }
-
     @RequestMapping(value = "/store", method = RequestMethod.PUT)
     public String updatetore() {
         System.out.println("Update chain store called");
         return "Updating";
+    }
+
+    @RequestMapping(value = "/store", method = RequestMethod.DELETE)
+    public void removeStore(@RequestParam Long storeId) {
+        System.out.println("Delete chain store called for storeId=" + storeId);
+        storeService.deleteStore(storeId);
     }
 
     @RequestMapping(value = "/store/chain/{id}", method = RequestMethod.GET)
